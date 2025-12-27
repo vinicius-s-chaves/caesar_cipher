@@ -1,13 +1,19 @@
 def caesar_cipher(word, shift_factor)
-  cripted_word = []
-  word.split('').each do |letter|
-    letter = letter.ord
-    letter += shift_factor
-    letter = letter.chr
+  lower_alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  upper_alphabet = lower_alphabet.upcase
+  coded_word = word.split('')
 
-    cripted_word.push(letter)
+  coded_word = coded_word.map do |character|
+    if lower_alphabet.include?(character)
+      character = lower_alphabet[(character.ord - 97 + shift_factor)%26]
+    elsif upper_alphabet.include?(character)
+      character = upper_alphabet[(character.ord - 65 + shift_factor)%26]
+    else
+      character
+    end
   end
-  cripted_word.join('')
+  
+  coded_word.join('')
 end
 
 puts "Convert to Caesar Cipher"
