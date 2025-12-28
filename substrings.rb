@@ -1,4 +1,3 @@
-# require 'pry-byebug'; binding.pry
 def substrings (string, dictionary)
   match_words = Hash.new(0)
   words = string.split(' ')
@@ -13,9 +12,9 @@ def substrings (string, dictionary)
 end
 
 def includes_word? (contained_word, container_word)
-  contained_word = contained_word.downcase.split('')
-  container_word = container_word.downcase.split('')
-  contained_word.all? { |character| container_word.include?(character) }
+  contained_word = contained_word.downcase
+  container_word = container_word.downcase
+  container_word.include?(contained_word)
 end
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
